@@ -38,7 +38,7 @@ JOIN Menu m ON o.r_id = m.r_id
 GROUP BY m.cuisine
 ORDER BY total_orders DESC;
 
--- 4. Which cuisines are most popular (by order volume), and are they also the most profitable? --
+-- 5. Which cuisines are most popular (by order volume), and are they also the most profitable? --
 
 SELECT u.user_id, u.name, u.Occupation, u.`Family size`,
        COUNT(*) AS total_orders,
@@ -49,7 +49,7 @@ GROUP BY u.user_id, u.name, u.Occupation, u.`Family size`
 ORDER BY total_spent DESC
 LIMIT 10;
 
--- 5. Who are the top 10 highest-value customers (for a loyalty/VIP program)? --
+-- 6. Who are the top 10 highest-value customers (for a loyalty/VIP program)? --
 
 SELECT u.`Family size`, u.`Marital Status`,
        COUNT(*) AS total_orders,
@@ -59,7 +59,7 @@ JOIN Orders o ON u.user_id = o.user_id
 GROUP BY u.`Family size`, u.`Marital Status`
 ORDER BY u.`Family size`, avg_order_value DESC;
 
--- 6. Veg vs Non-Veg preference by income level --
+-- 7. Veg vs Non-Veg preference by income level --
 
 SELECT f.veg_or_non_veg,
        ROUND(AVG(u.`Monthly Income`), 2) AS avg_income_of_buyers,
